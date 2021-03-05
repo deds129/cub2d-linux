@@ -19,7 +19,7 @@ char  **ft_read_cub(char *argv)
 		ft_lstadd_back(&head,ft_lstnew(line));
 	ft_lstadd_back(&head,ft_lstnew(line));
 	//malloc error
-	if(!(data = ft_calloc(ft_lstsize(head) + 1, sizeof(char *)))
+	if(!(data = ft_calloc(ft_lstsize(head) + 1, sizeof(char *))))
 		ft_error(ERR_MALLOC);
 	tmp = head;
 

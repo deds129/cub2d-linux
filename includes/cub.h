@@ -106,5 +106,8 @@ void ft_error(int err_code);
 /*read .cub*/
 char **ft_read_cub(char *argv);
 
+/*parse file -> add to struct params + errors*/
+void ft_parse_cub(char **data, t_mapinfo *mapinfo);
+
 
 #endif

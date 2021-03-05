@@ -35,6 +35,7 @@ int	main(int argc, char *argv[])
 	char **data;
 
 	//args error handle
+	//return - 2 w/o save; return - 3 w/ save
 	if (ft_check_main_args(argc, argv) == 0)
 		return (1);
 
@@ -43,14 +44,14 @@ int	main(int argc, char *argv[])
 
 	//read file to 2nd array
 	data = ft_read_cub((char *)argv[1]);
-	//parse map
+//	int i = -1;
+//	while (data[++i])
+//		ft_putendl_fd(data[i],1);
 
-	//free map data
-	int i = -1;
-	while (data[++i])
-	{
-		ft_putendl_fd(data[i],1);
-	}
+
+	//parse map
+	ft_parse_cub(data,&mapinfo);
+
 	free(data);
 	return (0);
 }
