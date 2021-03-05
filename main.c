@@ -1,32 +1,57 @@
 #include "./includes/cub.h"
 
+int ft_check_main_args(int argc, char *argv[])
+{
+	if(argc == 1)
+	{
+		ft_error(ERR_ARGC_MIN);
+		return (0);
+	}
+	else if (argc == 2)
+	{
+		//printf("filename: %s\n", argv[1]);
+		ft_parse_args(2, argv[1], NULL);
+		return (1);
+	}
+	else if (argc == 3)
+	{
+		//printf("filename: %s\n", argv[1]);
+		//printf("--save\n");
+		ft_parse_args(3, argv[1], argv[2]);
+		return (2);
+	}
+	else
+	{
+		ft_error(ERR_ARGC_MAX);
+		return (0);
+	}
+}
+
+
 //todo: точка входа
 int	main(int argc, char *argv[])
 {
 	t_mapinfo mapinfo;
+	char **data;
 
-	if(argc == 1)
-		ft_error(ERR_ARGC_MIN);
-	else if (argc == 2)
+	//args error handle
+	if (ft_check_main_args(argc, argv) == 0)
+		return (1);
+
+	//init params
+	ft_bzero(&mapinfo,sizeof(mapinfo));
+
+	//read file to 2nd array
+	data = ft_read_cub((char *)argv[1]);
+	//parse map
+
+	//free map data
+	int i = -1;
+	while (data[++i])
 	{
-		printf("filename: %s\n", argv[1]);
-		if (ft_parse_args(2, argv[1], NULL))
-		{
-			//init_structs
-			//parse_dot_cub
-
-		}
+		ft_putendl_fd(data[i],1);
 	}
-	else if (argc == 3)
-		{
-			printf("filename: %s\n", argv[1]);
-			printf("--save\n");
-			ft_parse_args(3, argv[1], argv[2]);
-		}
-	else
-		ft_error(ERR_ARGC_MAX);
-
-
+	free(data);
 	return (0);
 }
 

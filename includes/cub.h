@@ -17,18 +17,22 @@
 #define SCALE 16 // условный размер каждого квадратика в карте
 
 # define ERR_MALLOC -1
+
 # define ERR_ARGC_MIN -2
-# define ERR_ARGC_MAX -5
-# define ERR_FILENAME -3
+# define ERR_ARGC_MAX -3
 # define ERR_ARG_SAVE -4
-# define ERR_READ_MAP -6
-# define ERR_MAP_VALIDITY -7
-# define ERR_MAP_RES -8
-# define ERR_MAP_BAD_ARG -9
-# define ERR_MAP_T -10
-# define ERR_BAD_MAP -11
-# define ERR_MAP_C -12
-# define ERR_MAP_OPEN -13
+
+# define ERR_FILENAME -11
+# define ERR_FILE_OPEN -12
+
+# define ERR_MAP_READ -111
+# define ERR_MAP_VALIDITY -112
+# define ERR_MAP_RES -113
+# define ERR_MAP_BAD_ARG -114
+# define ERR_MAP_T -115
+# define ERR_MAP_BAD -116
+# define ERR_MAP_C -117
+# define ERR_MAP_OPEN -118
 
 //# define W 13
 //# define S 1
@@ -42,19 +46,19 @@ typedef struct	s_mapinfo
 {
 	int res_x;
 	int res_y;
-	char *north_texture;
-	char *south_texture;
-	char *west_texture;
-	char *east_texture;
-	char *sprite_texture;
+	char *no_texture;
+	char *so_texture;
+	char *we_texture;
+	char *ea_texture;
+	char *s_texture;
 
-	int floor_color_r;
-	int floor_color_g;
-	int floor_color_b;
+	int f_color_r;
+	int f_color_g;
+	int f_color_b;
 
-	int celling_color_r;
-	int celling_color_g;
-	int celling_color_b;
+	int c_color_r;
+	int c_color_g;
+	int c_color_b;
 	char **map;
 
 }				t_mapinfo;
@@ -94,8 +98,13 @@ typedef struct	s_all // структура для всего вместе
 
 /*args parse*/
 int ft_parse_args(int ac, char *filename, char *save);
+int ft_check_main_args(int argc, char *argv[]);
 
 /*errors handle*/
 void ft_error(int err_code);
+
+/*read .cub*/
+char **ft_read_cub(char *argv);
+
 
 #endif
