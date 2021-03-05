@@ -11,12 +11,12 @@ void ft_print_params(t_mapinfo *mapinfo)
 	printf("we_texture: %s\n",mapinfo->we_texture);
 	printf("ea_texture: %s\n",mapinfo->ea_texture);
 	printf("s_texture: %s\n",mapinfo->s_texture);
-//	printf("floor_color_r: %i\n",mapinfo->floor_color_r);
-//	printf("floor_color_g: %i\n",mapinfo->floor_color_g);
-//	printf("floor_color_b: %i\n",mapinfo->floor_color_b);
-//	printf("celling_color_r: %i\n",mapinfo->celling_color_r);
-//	printf("celling_color_g: %i\n",mapinfo->celling_color_g);
-//	printf("celling_color_b: %i\n",mapinfo->celling_color_b);
+	printf("floor_color_r: %i\n",mapinfo->f_color_r);
+	printf("floor_color_g: %i\n",mapinfo->f_color_g);
+	printf("floor_color_b: %i\n",mapinfo->f_color_b);
+	printf("celling_color_r: %i\n",mapinfo->c_color_r);
+	printf("celling_color_g: %i\n",mapinfo->c_color_g);
+	printf("celling_color_b: %i\n",mapinfo->c_color_b);
 	//построчно выводим 2м массив
 
 //	printf("\n===MAP===\n");
@@ -51,6 +51,51 @@ int ft_check_digit(char *line)
 	return (1);
 }
 
+//fix & change this function
+//idea replace commas to space and use split & check + errors
+void ft_set_color(char *str, t_mapinfo *mapinfo, char flag)
+{
+	int i;
+
+	i = 1;
+	if(flag == 'f')
+	{
+		while (str[i] && (str[i] == ' ' || str[i] == ','))
+			i++;
+		mapinfo->f_color_r = ft_atoi(&(*(str + i)));
+
+		while (str[i] && ft_isdigit(str[i]))
+			i++;
+		while (str[i] && (str[i] == ' ' || str[i] == ','))
+			i++;
+		mapinfo->f_color_g = ft_atoi(&(*(str + i)));
+
+		while (str[i] && ft_isdigit(str[i]))
+			i++;
+		while (str[i] && (str[i] == ' ' || str[i] == ','))
+			i++;
+		mapinfo->f_color_b = ft_atoi(&(*(str + i)));
+	}
+	if(flag == 'c')
+	{
+		while (str[i] && (str[i] == ' ' || str[i] == ','))
+			i++;
+		mapinfo->c_color_r = ft_atoi(&(*(str + i)));
+
+		while (str[i] && ft_isdigit(str[i]))
+			i++;
+		while (str[i] && (str[i] == ' ' || str[i] == ','))
+			i++;
+		mapinfo->c_color_g = ft_atoi(&(*(str + i)));
+
+		while (str[i] && ft_isdigit(str[i]))
+			i++;
+		while (str[i] && (str[i] == ' ' || str[i] == ','))
+			i++;
+		mapinfo->c_color_b = ft_atoi(&(*(str + i)));
+	}
+}
+
 void ft_set_resolution(char *str, t_mapinfo *mapinfo)
 {
 	char **tmp;
@@ -68,7 +113,6 @@ void ft_set_resolution(char *str, t_mapinfo *mapinfo)
 	}
 	else
 		ft_error(ERR_MAP_RES);
-
 }
 
 
@@ -81,6 +125,7 @@ void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
 	{
 		if (data[i][0] == 'R' && data[i][1] == ' ')
 			ft_set_resolution(data[i], mapinfo);
+		//check to printable letters
 		else if (data[i][0] == 'N' && data[i][1] == 'O')
 			mapinfo->no_texture = ft_strtrim(&data[i][2]," ");
 		else if (data[i][0] == 'S' && data[i][1] == 'O')
@@ -91,11 +136,11 @@ void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
 			mapinfo->ea_texture = ft_strtrim(&data[i][2]," ");
 		else if (data[i][0] == 'S' && data[i][1] == ' ')
 			mapinfo->s_texture = ft_strtrim(&data[i][1]," ");
-//
-//		else if (data[i][0] == 'F' && data[i][1] == ' ')
-//			ft_set_color(data[i],mapinfo,'f');
-//		else if (data[i][0] == 'C' && data[i][1] == ' ')
-//			ft_set_color(data[i], mapinfo,'c');
+		//fix this
+		else if (data[i][0] == 'F' && data[i][1] == ' ')
+			ft_set_color(data[i],mapinfo,'f');
+		else if (data[i][0] == 'C' && data[i][1] == ' ')
+			ft_set_color(data[i], mapinfo,'c');
 
 		i++;
 	}
