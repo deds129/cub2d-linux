@@ -26,7 +26,7 @@ void ft_error(int err_code)
 	else if (err_code == ERR_MAP_T)
 		ft_putstr_fd("Error\nMap params are bad. Check texture parameters.\n",2);
 	else if (err_code == ERR_MAP_C)
-		ft_putstr_fd("Error\nMap params are bad. Check colours.\n",2);
+		ft_putstr_fd("Error\nMap params are bad. Check colors.\n",2);
 	else if (err_code == ERR_MAP_OPEN)
 		ft_putstr_fd("Error\nMap borders are open.\n",2);
 
