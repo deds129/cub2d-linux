@@ -61,13 +61,7 @@ void ft_print_params(t_mapinfo *mapinfo)
 	printf("celling_color_r: %i\n",mapinfo->c_color_r);
 	printf("celling_color_g: %i\n",mapinfo->c_color_g);
 	printf("celling_color_b: %i\n",mapinfo->c_color_b);
-	//todo: remove this test
-	//char *str = "hello";
-	//printf("%s", ft_chrrep(str,'l','o'));
-
-	//построчно выводим 2м массив
-
-//	printf("\n===MAP===\n");
+	printf("\n===MAP===\n");
 //	i = -1;
 //	while(mapinfo->map[++i])
 //		printf("%s\n",mapinfo->map[i]);
@@ -138,6 +132,15 @@ void ft_set_resolution(char *str, t_mapinfo *mapinfo)
 		ft_error(ERR_MAP_RES);
 	free(tmp);
 }
+int ft_valid_str(char *data)
+{
+	if (data[0] == 'R' || data[0] == 'N' || data[0] == 'S' ||
+		data[0] == 'W' || data[0] == 'E' || data[0] == 'F' ||
+		data[0] == 'C' || data[0] == '\n' || data[0] == ' ' ||
+		data[0] == '1' || data[0] == '\0')
+			return (1);
+	return (0);
+}
 
 
 void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
@@ -147,26 +150,31 @@ void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
 	i = 0;
 	while (data[i])
 	{
-		if (data[i][0] == 'R' && data[i][1] == ' ')
-			ft_set_resolution(data[i], mapinfo);
-		//check to printable letters
-		else if (data[i][0] == 'N' && data[i][1] == 'O')
-			mapinfo->no_texture = ft_strtrim(&data[i][2]," ");
-		else if (data[i][0] == 'S' && data[i][1] == 'O')
-			mapinfo->so_texture = ft_strtrim(&data[i][2]," ");
-		else if (data[i][0] == 'W' && data[i][1] == 'E')
-			mapinfo->we_texture = ft_strtrim(&data[i][2]," ");
-		else if (data[i][0] == 'E' && data[i][1] == 'A')
-			mapinfo->ea_texture = ft_strtrim(&data[i][2]," ");
-		else if (data[i][0] == 'S' && data[i][1] == ' ')
-			mapinfo->s_texture = ft_strtrim(&data[i][1]," ");
-		//fix this
-		else if (data[i][0] == 'F' && data[i][1] == ' ')
-			ft_set_color(data[i],mapinfo,'F');
-		else if (data[i][0] == 'C' && data[i][1] == ' ')
-			ft_set_color(data[i], mapinfo,'C');
-
-		i++;
+		//printf("%c\n",data[i][0]);
+		if(ft_valid_str(data[i]) == 1)
+		{
+			//printf("test");
+			if (data[i][0] == 'R' && data[i][1] == ' ')
+				ft_set_resolution(data[i], mapinfo);
+			else if (data[i][0] == 'N' && data[i][1] == 'O')
+				mapinfo->no_texture = ft_strtrim(&data[i][2], " ");
+			else if (data[i][0] == 'S' && data[i][1] == 'O')
+				mapinfo->so_texture = ft_strtrim(&data[i][2], " ");
+			else if (data[i][0] == 'W' && data[i][1] == 'E')
+				mapinfo->we_texture = ft_strtrim(&data[i][2], " ");
+			else if (data[i][0] == 'E' && data[i][1] == 'A')
+				mapinfo->ea_texture = ft_strtrim(&data[i][2], " ");
+			else if (data[i][0] == 'S' && data[i][1] == ' ')
+				mapinfo->s_texture = ft_strtrim(&data[i][1], " ");
+			else if (data[i][0] == 'F' && data[i][1] == ' ')
+				ft_set_color(data[i], mapinfo, 'F');
+			else if (data[i][0] == 'C' && data[i][1] == ' ')
+				ft_set_color(data[i], mapinfo, 'C');
+		}
+		else
+			ft_error(ERR_MAP_VALIDITY);
+	i++;
 	}
+	//parse map
 	ft_print_params(mapinfo);
 }

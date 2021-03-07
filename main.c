@@ -49,7 +49,7 @@ int	main(int argc, char *argv[])
 //		ft_putendl_fd(data[i],1);
 
 
-	//parse map
+	//parse params
 	ft_parse_cub(data,&mapinfo);
 
 	free(data);
