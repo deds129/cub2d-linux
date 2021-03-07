@@ -50,8 +50,8 @@ int	main(int argc, char *argv[])
 
 
 	//parse params
-	ft_parse_cub(data,&mapinfo);
-
+	ft_parse_cub(data, &mapinfo);
+	//ft_parse_map(data, &mapinfo);
 	free(data);
 	return (0);
 }

@@ -106,6 +106,11 @@ void ft_error(int err_code);
 /*read .cub*/
 char **ft_read_cub(char *argv);
 
+/*parse utils*/
+int ft_valid_str(char *data);
+int ft_count_lines(char **temp);
+int ft_check_digit(char *line);
+char *ft_chrrep(char *str,char chr, char new);
 /*parse file -> add to struct params + errors*/
 void ft_parse_cub(char **data, t_mapinfo *mapinfo);
 

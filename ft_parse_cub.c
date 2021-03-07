@@ -1,53 +1,8 @@
 #include "./includes/cub.h"
 
-int ft_count_lines(char **temp)
-{
-	int i;
-
-	//todo: check null-case
-	i = 0;
-	while (temp[i])
-		i++;
-	return (i);
-}
-
-int ft_check_digit(char *line)
-{
-	int i;
-
-	//todo: check null-case
-	i = -1;
-	while (line[++i])
-	{
-		if(!(ft_isdigit(line[i])))
-			return (0);
-	}
-	return (1);
-}
-//return new string with replaced char to new char
-//malloc problem
-char *ft_chrrep(char *str,char chr, char new)
-{
-	int i;
-	i = 0;
-	char *tmp;
-	tmp = ft_strdup(str);
-	while(tmp[i])
-	{
-		if(tmp[i] == chr)
-		{
-			tmp[i] = new;
-		}
-		i++;
-	}
-	return (tmp);
-}
-
-
 //todo: remove this
 void ft_print_params(t_mapinfo *mapinfo)
 {
-	int i;
 	printf("res_x: %d\n",mapinfo->res_x);
 	printf("res_y: %d\n",mapinfo->res_y);
 	printf("no_texture: %s\n",mapinfo->no_texture);
@@ -62,13 +17,12 @@ void ft_print_params(t_mapinfo *mapinfo)
 	printf("celling_color_g: %i\n",mapinfo->c_color_g);
 	printf("celling_color_b: %i\n",mapinfo->c_color_b);
 	printf("\n===MAP===\n");
+//	int i;
 //	i = -1;
 //	while(mapinfo->map[++i])
 //		printf("%s\n",mapinfo->map[i]);
 
 }
-
-
 
 //fix & change this function
 //idea replace commas to space and use split & check + errors
@@ -132,23 +86,13 @@ void ft_set_resolution(char *str, t_mapinfo *mapinfo)
 		ft_error(ERR_MAP_RES);
 	free(tmp);
 }
-int ft_valid_str(char *data)
-{
-	if (data[0] == 'R' || data[0] == 'N' || data[0] == 'S' ||
-		data[0] == 'W' || data[0] == 'E' || data[0] == 'F' ||
-		data[0] == 'C' || data[0] == '\n' || data[0] == ' ' ||
-		data[0] == '1' || data[0] == '\0')
-			return (1);
-	return (0);
-}
-
 
 void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
 {
 	int i;
 
-	i = 0;
-	while (data[i])
+	i = -1;
+	while (data[++i])
 	{
 		//printf("%c\n",data[i][0]);
 		if(ft_valid_str(data[i]) == 1)
@@ -173,8 +117,6 @@ void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
 		}
 		else
 			ft_error(ERR_MAP_VALIDITY);
-	i++;
 	}
-	//parse map
 	ft_print_params(mapinfo);
 }

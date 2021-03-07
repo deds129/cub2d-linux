@@ -19,6 +19,7 @@ SRCS 	=		main.c \
 				ft_error.c \
 				ft_init_structs.c \
 				ft_parse_cub.c \
+				ft_parse_utils.c \
 				ft_read_cub.c
 
 
