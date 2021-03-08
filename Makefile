@@ -20,7 +20,9 @@ SRCS 	=		main.c \
 				ft_init_structs.c \
 				ft_parse_cub.c \
 				ft_parse_utils.c \
-				ft_read_cub.c
+				ft_parse_map.c \
+				ft_read_cub.c \
+				ft_player.c
 
 
 OBJS 	= 	$(SRCS:.c=.o)

@@ -32,6 +32,9 @@ int ft_check_main_args(int argc, char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_mapinfo mapinfo;
+	t_all all;
+	t_win win;
+	t_plr plr;
 	char **data;
 
 	//args error handle
@@ -49,9 +52,17 @@ int	main(int argc, char *argv[])
 //		ft_putendl_fd(data[i],1);
 
 
-	//parse params
+	//parse map params + valid check
 	ft_parse_cub(data, &mapinfo);
-	//ft_parse_map(data, &mapinfo);
+	//parse map + valid check
+	ft_parse_map(data, &mapinfo);
+	//test func
+//	ft_print_params(&mapinfo);
+	//find plr pos in VALID map
+	ft_init_player(mapinfo.map,&plr);
+	printf("Player position: y = %f | x = %f" , plr.y ,plr.x);
+	//todo: создать отдельный блок для отчистки после выполнения программы
+	free(mapinfo.map);
 	free(data);
 	return (0);
 }

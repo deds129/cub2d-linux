@@ -113,6 +113,13 @@ int ft_check_digit(char *line);
 char *ft_chrrep(char *str,char chr, char new);
 /*parse file -> add to struct params + errors*/
 void ft_parse_cub(char **data, t_mapinfo *mapinfo);
+void ft_parse_map(char **data, t_mapinfo *mapinfo);
+
+/*player*/
+void ft_init_player(char **map, t_plr *plr);
+
+/*testing*/
+void ft_print_params(t_mapinfo *mapinfo);
 
 
 #endif

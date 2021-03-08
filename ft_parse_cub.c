@@ -3,6 +3,7 @@
 //todo: remove this
 void ft_print_params(t_mapinfo *mapinfo)
 {
+	printf("=====================\n");
 	printf("res_x: %d\n",mapinfo->res_x);
 	printf("res_y: %d\n",mapinfo->res_y);
 	printf("no_texture: %s\n",mapinfo->no_texture);
@@ -17,10 +18,10 @@ void ft_print_params(t_mapinfo *mapinfo)
 	printf("celling_color_g: %i\n",mapinfo->c_color_g);
 	printf("celling_color_b: %i\n",mapinfo->c_color_b);
 	printf("\n===MAP===\n");
-//	int i;
-//	i = -1;
-//	while(mapinfo->map[++i])
-//		printf("%s\n",mapinfo->map[i]);
+	int i;
+	i = -1;
+	while(mapinfo->map[++i])
+		printf("%s\n",mapinfo->map[i]);
 
 }
 
@@ -118,5 +119,5 @@ void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
 		else
 			ft_error(ERR_MAP_VALIDITY);
 	}
-	ft_print_params(mapinfo);
+
 }
