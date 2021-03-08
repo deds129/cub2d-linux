@@ -93,7 +93,6 @@ typedef struct	s_all // структура для всего вместе
 {
 	t_win		*wnd;
 	t_plr		*plr;
-	char		**map;
 }				  t_all;
 
 /*args parse*/
@@ -116,7 +115,10 @@ void ft_parse_cub(char **data, t_mapinfo *mapinfo);
 void ft_parse_map(char **data, t_mapinfo *mapinfo);
 
 /*player*/
-void ft_init_player(char **map, t_plr *plr);
+void ft_init_player(t_mapinfo *mapinfo, t_plr *plr);
+
+/*mlx*/
+void ft_init_window(t_win *win, t_mapinfo *mapinfo, char *wname);
 
 /*testing*/
 void ft_print_params(t_mapinfo *mapinfo);

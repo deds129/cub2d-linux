@@ -22,6 +22,7 @@ SRCS 	=		main.c \
 				ft_parse_utils.c \
 				ft_parse_map.c \
 				ft_read_cub.c \
+				ft_window.c	\
 				ft_player.c
 
 

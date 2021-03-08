@@ -27,14 +27,24 @@ int ft_check_main_args(int argc, char *argv[])
 	}
 }
 
+void ft_init(t_mapinfo *mapinfo, t_all *all, char *name)
+{
+	t_win win;
+	t_plr plr;
+
+	ft_init_player(mapinfo,&plr);
+	printf("Player position: y = %f | x = %f" , plr.y ,plr.x);
+	ft_init_window(&win,mapinfo,name);
+	all->wnd = &win;
+	all->plr = &plr;
+}
 
 //todo: точка входа
 int	main(int argc, char *argv[])
 {
 	t_mapinfo mapinfo;
 	t_all all;
-	t_win win;
-	t_plr plr;
+
 	char **data;
 
 	//args error handle
@@ -57,10 +67,11 @@ int	main(int argc, char *argv[])
 	//parse map + valid check
 	ft_parse_map(data, &mapinfo);
 	//test func
-//	ft_print_params(&mapinfo);
-	//find plr pos in VALID map
-	ft_init_player(mapinfo.map,&plr);
-	printf("Player position: y = %f | x = %f" , plr.y ,plr.x);
+	//ft_print_params(&mapinfo);
+	//init player pos + init window
+	ft_init(&mapinfo,&all,argv[1]);
+
+	mlx_loop(all.wnd->mlx);
 	//todo: создать отдельный блок для отчистки после выполнения программы
 	free(mapinfo.map);
 	free(data);

@@ -1,17 +1,17 @@
 #include "./includes/cub.h"
 
-void ft_init_player(char **map, t_plr *plr)
+void ft_init_player(t_mapinfo *mapinfo, t_plr *plr)
 {
 	t_point point;
 
 	ft_bzero(&point, sizeof(t_point));
-	while (map[point.y])
+	while (mapinfo->map[point.y])
 	{
 		//printf("%s\n",map[point.y]);
 		point.x = 0;
-		while (map[point.y][point.x])
+		while (mapinfo->map[point.y][point.x])
 		{
-			if(ft_strchr("NEWS",map[point.y][point.x]))
+			if(ft_strchr("NEWS",mapinfo->map[point.y][point.x]))
 			{
 //				plr->y = (point.y) * SCALE;
 //				plr->x = (point.x) * SCALE;
