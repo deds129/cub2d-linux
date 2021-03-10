@@ -11,12 +11,14 @@ void ft_init_game(t_mapinfo *mapinfo, t_all *all, char *name)
 	all->wnd = &win;
 	all->plr = &plr;
 	all->map = mapinfo->map;
-//	printf("init func\n");
-//	printf("%p\n",win.win);
-//	printf("%p\n",all->wnd->win);
-
+	printf("%p\n",all->wnd->win);
+	//start game
 	ft_draw_map(all);
 	ft_print_player(all);
+
+
+
+
 }
 
 

@@ -17,12 +17,13 @@ void ft_scale_img(t_point point, t_win *mwin)
 		point.x -= SCALE;
 		point.y++;
 	}
+	//mlx_destroy_image(mwin->mlx,mwin->img);
 }
 
 void ft_draw_map(t_all *all)
 {
 	t_point point;
-
+	printf("%p\n",all->wnd->win);
 	ft_bzero(&point, sizeof(t_point));
 	while (all->map[point.y])
 	{

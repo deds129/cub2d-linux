@@ -49,9 +49,14 @@ int	main(int argc, char *argv[])
 	//ft_print_params(&mapinfo);
 	//init player pos + init window
 	ft_init_game(&mapinfo,&all,argv[1]);
-
+	printf("main: %p\n",all.wnd->win);
+	//mlx_key_hook(all.wnd->win, ft_key_press, &all);
+	mlx_hook(all.wnd->win, 2, 1L<<0, ft_key_press, &all);
 
 	//printf("%p\n",all.wnd->win);
+
+
+
 	mlx_loop(all.wnd->mlx);
 	//todo: создать отдельный блок для отчистки после выполнения программы
 	free(mapinfo.map);

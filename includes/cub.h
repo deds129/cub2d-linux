@@ -128,6 +128,7 @@ void ft_print_player(t_all *all);
 void ft_print_params(t_mapinfo *mapinfo);
 void ft_init_game(t_mapinfo *mapinfo, t_all *all, char *name);
 
-
+/*hooks, key press*/
+int             ft_key_press(int keycode, t_all *all);
 
 #endif

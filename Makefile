@@ -25,6 +25,7 @@ SRCS 	=		main.c \
 				ft_window.c	\
 				ft_init_game.c \
 				ft_draw_map.c \
+				ft_hook.c \
 				ft_player.c
 
 OBJS 	= 	$(SRCS:.c=.o)
