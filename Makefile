@@ -27,7 +27,6 @@ SRCS 	=		main.c \
 				ft_draw_map.c \
 				ft_player.c
 
-
 OBJS 	= 	$(SRCS:.c=.o)
 CC 		= 	gcc
 NAME 	= 	cub3D
