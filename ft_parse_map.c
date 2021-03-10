@@ -14,7 +14,7 @@ int ft_row_counter(char **data)
 			line_count++;
 		}
 	}
-	printf("lines in map : %d\n",line_count);
+//	printf("lines in map : %d\n",line_count);
 	return (line_count);
 }
 
@@ -34,7 +34,7 @@ int ft_longest_line(char **data)
 		}
 
 	}
-	printf("longest line in map : %d\n",max);
+	//printf("longest line in map : %d\n",max);
 	return (max);
 }
 

@@ -60,7 +60,6 @@ typedef struct	s_mapinfo
 	int c_color_g;
 	int c_color_b;
 	char **map;
-
 }				t_mapinfo;
 
 typedef struct	s_win //структура для окна
@@ -93,6 +92,7 @@ typedef struct	s_all // структура для всего вместе
 {
 	t_win		*wnd;
 	t_plr		*plr;
+	char		**map;
 }				  t_all;
 
 /*args parse*/
@@ -109,19 +109,25 @@ char **ft_read_cub(char *argv);
 int ft_valid_str(char *data);
 int ft_count_lines(char **temp);
 int ft_check_digit(char *line);
-char *ft_chrrep(char *str,char chr, char new);
+char *ft_chrrep(char *str,char chr, char new_chr);
+
 /*parse file -> add to struct params + errors*/
 void ft_parse_cub(char **data, t_mapinfo *mapinfo);
 void ft_parse_map(char **data, t_mapinfo *mapinfo);
 
-/*player*/
+/*init all + linking*/
+void ft_init(t_mapinfo *mapinfo, t_all *all, char *name);
 void ft_init_player(t_mapinfo *mapinfo, t_plr *plr);
-
-/*mlx*/
 void ft_init_window(t_win *win, t_mapinfo *mapinfo, char *wname);
+
+/*drawing*/
+void ft_draw_map(t_all *all);
+void ft_print_player(t_plr *player, t_win *wnd);
 
 /*testing*/
 void ft_print_params(t_mapinfo *mapinfo);
+void ft_init_game(t_mapinfo *mapinfo, t_all *all, char *name);
+
 
 
 #endif
