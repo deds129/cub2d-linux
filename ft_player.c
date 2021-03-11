@@ -14,7 +14,6 @@ void ft_init_player(t_mapinfo *mapinfo, t_plr *plr)
 			{
 				plr->y = (point.y) * SCALE;
 				plr->x = (point.x) * SCALE;
-
 			}
 			point.x++;
 		}
@@ -28,13 +27,19 @@ void ft_print_player(t_all *all)
 
 	end.x = all->plr->x + SCALE;
 	end.y = all->plr->y + SCALE;
+	all->plr->x * SCALE;
+	all->plr->y * SCALE;
 	while(all->plr->y < end.y)
 	{
 		while (all->plr->x < end.x)
-			mlx_pixel_put(all->wnd->mlx,all->wnd->win,all->plr->x++,all->plr->y,
-				 0x119911);
+		{
+			mlx_pixel_put(all->wnd->mlx, all->wnd->win, all->plr->x++,
+						  all->plr->y,
+						  0x2199F0);
+		}
 		all->plr->x -= SCALE;
 		all->plr->y++;
 	}
+	all->plr->y -= SCALE;
 }
 

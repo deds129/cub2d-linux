@@ -15,10 +15,6 @@ void ft_init_game(t_mapinfo *mapinfo, t_all *all, char *name)
 	//start game
 	ft_draw_map(all);
 	ft_print_player(all);
-
-
-
-
 }
 
 

@@ -10,14 +10,10 @@ void ft_scale_img(t_point point, t_win *mwin)
 	while (point.y < end.y)
 	{
 		while (point.x < end.x)
-		{
 			mlx_pixel_put(mwin->mlx,mwin->win,point.x++,point.y,0xFFFFFF);
-			point.x++;
-		}
 		point.x -= SCALE;
 		point.y++;
 	}
-	//mlx_destroy_image(mwin->mlx,mwin->img);
 }
 
 void ft_draw_map(t_all *all)
@@ -38,5 +34,8 @@ void ft_draw_map(t_all *all)
 		}
 		point.y++;
 	}
+	ft_print_player(all);
+	//mlx_put_image_to_window(all->wnd->mlx, all->wnd->win,all->wnd->img,0,0);
+	//mlx_destroy_image(all->wnd->mlx, all->wnd->img);
 }
 

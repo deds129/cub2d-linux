@@ -32,6 +32,9 @@ int	main(int argc, char *argv[])
 {
 	t_mapinfo mapinfo;
 	t_all all;
+	t_win win;
+	t_plr plr;
+
 	char **data;
 	ft_bzero(&all,sizeof(all));
 	//args error handle
@@ -46,16 +49,26 @@ int	main(int argc, char *argv[])
 	//parse map + valid check
 	ft_parse_map(data, &mapinfo);
 	//test func
-	//ft_print_params(&mapinfo);
-	//init player pos + init window
-	ft_init_game(&mapinfo,&all,argv[1]);
-	printf("main: %p\n",all.wnd->win);
-	//mlx_key_hook(all.wnd->win, ft_key_press, &all);
-	mlx_hook(all.wnd->win, 2, 1L<<0, ft_key_press, &all);
+	ft_print_params(&mapinfo);
 
-	//printf("%p\n",all.wnd->win);
+	//todo: init in new func
+	//ft_init_game(&mapinfo,&all,argv[1]);
 
-
+	ft_init_player(&mapinfo,&plr);
+	ft_init_window(&win,&mapinfo,argv[1]);
+	all.wnd = &win;
+	all.plr = &plr;
+	all.map = mapinfo.map;
+	ft_draw_map(&all);
+	printf("y: %f\n", all.plr->y);
+	printf("x: %f\n", all.plr->x);
+//	ft_print_player(&all);
+//	printf("--------\ny: %f\n", all.plr->y);
+//	printf("x: %f\n", all.plr->x);
+	//printf("main: %p\n",all.wnd->win);
+	//key hooks read
+	mlx_hook(all.wnd->win,2,(1L << 0), &ft_key_press, &all);
+	mlx_hook(all.wnd->win, 17, 0, &ft_close, &all);
 
 	mlx_loop(all.wnd->mlx);
 	//todo: создать отдельный блок для отчистки после выполнения программы

@@ -1,43 +1,47 @@
 #include "./includes/cub.h"
 
+int	ft_close(int code, t_all *all)
+{
+	printf("X");
+	return (0);
+}
+
 int             ft_key_press(int key, t_all *all)
 {
-	printf("key press: %p\n",all->wnd->win);
+	//printf("key press: %p\n",&all->wnd->win);
 	printf("key: %d\n", key);
+	mlx_clear_window(all->wnd->mlx, all ->wnd->win);
 	if(key == 65307)
 	{
+		printf("esc\n");
 		mlx_destroy_window(all->wnd->mlx, all->wnd->win);
 		exit(0);
 	}
+	if (key == 119)
+	{
+		all->plr->y -= 1;
+		printf("w\n");
+	}
+	if (key == 115)
+	{
+		all->plr->y += 1;
+		printf("s\n");
+	}
+	if (key == 97)
+	{
+		all->plr->x -= 1;
+		printf("a\n");
+	}
+	if (key == 100)
+	{
+		all->plr->x += 1;
+		printf("d\n");
+	}
+
+	printf("y: %f\n", all->plr->y);
+	printf("x: %f\n", all->plr->x);
 	ft_draw_map(all);
 	return (0);
 }
 
-//int ft_key_press(int key, t_all *all)
-//{
-//	printf("key_press");
-//	mlx_clear_window(all->wnd->mlx,all->wnd->mlx);
-//
-//	if(key == 13)
-//	{
-//		printf("key_press");
-//	}
-//	if(key == 13)
-//	{
-//		all->plr->y += sin(all->plr->dir) * 4;
-//		all->plr->x += cos(all->plr->dir) * 4;
-//	}
-//	if(key == 1)
-//	{
-//		all->plr->y -= sin(all->plr->dir) * 4;
-//		all->plr->x -= cos(all->plr->dir) * 4;
-//	}
-//	if (key == 0)
-//		all->plr->dir -= 0.1;
-//	if (key == 2)
-//		all->plr->dir += 0.1;
-//	if (key == 53)
-//		exit(0);
-//	ft_draw_map(all);
-//	return (0);
-//}
+
