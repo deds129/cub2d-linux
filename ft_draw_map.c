@@ -1,5 +1,5 @@
 #include "./includes/cub.h"
-void ft_scale_img(t_point point, t_win *mwin)
+void ft_scale_img(t_point point, t_win *wnd)
 {
 	t_point end;
 
@@ -10,7 +10,10 @@ void ft_scale_img(t_point point, t_win *mwin)
 	while (point.y < end.y)
 	{
 		while (point.x < end.x)
-			mlx_pixel_put(mwin->mlx,mwin->win,point.x++,point.y,0xFFFFFF);
+		{
+			pixel_put(wnd,point.x++,point.y,0xFFFFFF);
+			//mlx_pixel_put(wnd->mlx,wnd->win,point.x++,point.y,0xFFFFFF);
+		}
 		point.x -= SCALE;
 		point.y++;
 	}
@@ -19,7 +22,8 @@ void ft_scale_img(t_point point, t_win *mwin)
 void ft_draw_map(t_all *all)
 {
 	t_point point;
-	printf("%p\n",all->wnd->win);
+	printf("win pointer ft_draw_map: %p\n", all->wnd->win);
+	printf("win mlx ft_draw_map: %p\n", all->wnd->mlx);
 	ft_bzero(&point, sizeof(t_point));
 	while (all->map[point.y])
 	{
@@ -35,7 +39,7 @@ void ft_draw_map(t_all *all)
 		point.y++;
 	}
 	ft_print_player(all);
-	//mlx_put_image_to_window(all->wnd->mlx, all->wnd->win,all->wnd->img,0,0);
-	//mlx_destroy_image(all->wnd->mlx, all->wnd->img);
+	mlx_put_image_to_window(all->wnd->mlx, all->wnd->win,all->wnd->img,0,0);
+
 }
 

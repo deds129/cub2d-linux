@@ -121,6 +121,8 @@ void ft_init_player(t_mapinfo *mapinfo, t_plr *plr);
 void ft_init_window(t_win *win, t_mapinfo *mapinfo, char *wname);
 
 /*drawing*/
+void	pixel_put(t_win *twin, int x, int y, int color);
+
 void ft_draw_map(t_all *all);
 void ft_print_player(t_all *all);
 

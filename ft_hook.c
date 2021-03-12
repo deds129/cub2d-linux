@@ -8,9 +8,15 @@ int	ft_close(int code, t_all *all)
 
 int             ft_key_press(int key, t_all *all)
 {
-	//printf("key press: %p\n",&all->wnd->win);
+//	t_win win;
+//	win = *all->wnd;
 	printf("key: %d\n", key);
-	mlx_clear_window(all->wnd->mlx, all ->wnd->win);
+	printf("win pointer ft_key_press: %p\n", all->wnd->win);
+	printf("win mlx ft_key_press: %p\n", all->wnd->mlx);
+	mlx_clear_window(all->wnd->mlx, all->wnd->win);
+	//mlx_destroy_image(all->wnd->mlx, all->wnd->img);
+
+
 	if(key == 65307)
 	{
 		printf("esc\n");
@@ -20,22 +26,18 @@ int             ft_key_press(int key, t_all *all)
 	if (key == 119)
 	{
 		all->plr->y -= 1;
-		printf("w\n");
 	}
 	if (key == 115)
 	{
 		all->plr->y += 1;
-		printf("s\n");
 	}
 	if (key == 97)
 	{
 		all->plr->x -= 1;
-		printf("a\n");
 	}
 	if (key == 100)
 	{
 		all->plr->x += 1;
-		printf("d\n");
 	}
 
 	printf("y: %f\n", all->plr->y);

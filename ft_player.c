@@ -33,9 +33,9 @@ void ft_print_player(t_all *all)
 	{
 		while (all->plr->x < end.x)
 		{
-			mlx_pixel_put(all->wnd->mlx, all->wnd->win, all->plr->x++,
-						  all->plr->y,
-						  0x2199F0);
+//			mlx_pixel_put(all->wnd->mlx, all->wnd->win, all->plr->x++,
+//				 all->plr->y,0x2199F0);
+			pixel_put(all->wnd,all->plr->x++,all->plr->y,0x2199F0);
 		}
 		all->plr->x -= SCALE;
 		all->plr->y++;
