@@ -66,15 +66,18 @@ int	main(int argc, char *argv[])
 	ft_init_window(&win,&mapinfo,argv[1]);
 	printf("win pointer main: %p\n", win.win);
 	printf("win mlx main: %p\n", win.mlx);
+	printf("win img main: %p\n", win.img);
 	all.wnd = &win;
 	all.plr = &plr;
 	all.map = mapinfo.map;
 
 
 
-	ft_draw_map(&all);
+
 	printf("y: %f\n", all.plr->y);
 	printf("x: %f\n", all.plr->x);
+	//mlx_put_image_to_window(all.wnd->mlx, all.wnd->win,all.wnd->img,0,0);
+	ft_draw_map(&all);
 
 	//key hooks read
 	mlx_hook(all.wnd->win,2,(1L << 0), &ft_key_press, &all);
