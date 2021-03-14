@@ -44,8 +44,7 @@ void	ft_draw_ray(t_all *all)
 //		point.y++;
 //	}
 //}
-
-void ft_init_player(t_mapinfo *mapinfo, t_plr *plr)
+void ft_set_dir(t_mapinfo *mapinfo, t_plr *plr)
 {
 	t_point point;
 
@@ -55,11 +54,42 @@ void ft_init_player(t_mapinfo *mapinfo, t_plr *plr)
 		point.x = 0;
 		while (mapinfo->map[point.y][point.x])
 		{
-			if(ft_strchr("NEWS",mapinfo->map[point.y][point.x]))
+			if(ft_strchr("N",mapinfo->map[point.y][point.x]))
+				plr->dir = M_PI_2;
+			if(ft_strchr("E",mapinfo->map[point.y][point.x]))
+				plr->dir = 0;
+			if(ft_strchr("S",mapinfo->map[point.y][point.x]))
+				plr->dir = 3 * M_PI_2;
+			if(ft_strchr("W",mapinfo->map[point.y][point.x]))
+				plr->dir = M_PI;
+			point.x++;
+		}
+		point.y++;
+	}
+}
+
+void ft_init_player(t_mapinfo *mapinfo, t_plr *plr)
+{
+	t_point point;
+	int dup_plr;
+
+	ft_bzero(&point, sizeof(t_point));
+	dup_plr = 1;
+	while (mapinfo->map[point.y])
+	{
+		point.x = 0;
+		while (mapinfo->map[point.y][point.x])
+		{
+			if(ft_strchr("NEWS",mapinfo->map[point.y][point.x]) && dup_plr != 0)
 			{
+
+				ft_set_dir(mapinfo, plr);
 				plr->y = (point.y) * SCALE;
 				plr->x = (point.x) * SCALE;
+				dup_plr = 0;
 			}
+//			else
+//				ft_error(ERR_MAP_VALIDITY);
 			point.x++;
 		}
 		point.y++;
