@@ -1,4 +1,49 @@
 #include "./includes/cub.h"
+void	ft_draw_ray(t_all *all)
+{
+	t_plr	ray;
+	int i;
+
+	ray = *all->plr; // задаем координаты луча равные координатам
+	ray.start = all->plr->dir - M_PI_4;
+	ray.end = all->plr->dir + M_PI_4;
+	printf("start : %f\n", ray.start);
+	printf("end : %f\n", ray.end);
+
+
+	while (ray.start < ray.end)
+	{
+		ray.x = all->plr->x; // каждый раз возвращаемся в точку начала
+		ray.y = all->plr->y;
+		i = 0;
+		while (all->map[(int)(ray.y / SCALE)][(int)(ray.x / SCALE)] != '1')
+		{
+			ray.x += cos(ray.start);
+			ray.y += sin(ray.start);
+			pixel_put(all->wnd, ray.x, ray.y, 0x990099);
+		}
+		ray.start += (M_PI_2) / 320;
+	}
+}
+
+//void ft_set_dir(t_mapinfo *mapinfo, t_plr *plr)
+//{
+//	t_point point;
+//
+//	ft_bzero(&point, sizeof(t_point));
+//	while (mapinfo->map[point.y])
+//	{
+//		int flag;
+//		point.x = 0;
+//		flag = 0;
+//		while (mapinfo->map[point.y][point.x])
+//		{
+//
+//			point.x++;
+//		}
+//		point.y++;
+//	}
+//}
 
 void ft_init_player(t_mapinfo *mapinfo, t_plr *plr)
 {

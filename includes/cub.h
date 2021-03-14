@@ -125,6 +125,7 @@ void	pixel_put(t_win *twin, int x, int y, int color);
 
 void ft_draw_map(t_all *all);
 void ft_print_player(t_all *all);
+void	ft_draw_ray(t_all *all);
 
 /*testing*/
 void ft_print_params(t_mapinfo *mapinfo);

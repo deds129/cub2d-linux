@@ -23,11 +23,11 @@ void ft_scale_img(t_point point, t_win *wnd, long color)
 void ft_draw_map(t_all *all)
 {
 	t_point point;
-	printf("win pointer ft_draw_map: %p\n", all->wnd->win);
-	printf("win mlx ft_draw_map: %p\n", all->wnd->mlx);
-	printf("win img ft_draw_map: %p\n", all->wnd->img);
+//	printf("win pointer ft_draw_map: %p\n", all->wnd->win);
+//	printf("win mlx ft_draw_map: %p\n", all->wnd->mlx);
+//	printf("win img ft_draw_map: %p\n", all->wnd->img);
 	ft_bzero(&point, sizeof(t_point));
-	mlx_put_image_to_window(all->wnd->mlx, all->wnd->win,all->wnd->img,0,0);
+
 
 
 	while (all->map[point.y])
@@ -48,6 +48,9 @@ void ft_draw_map(t_all *all)
 		}
 		point.y++;
 	}
+	mlx_put_image_to_window(all->wnd->mlx, all->wnd->win,all->wnd->img,0,0);
 	ft_print_player(all);
+	ft_draw_ray(all);
+
 }
 
