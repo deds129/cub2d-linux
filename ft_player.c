@@ -71,29 +71,29 @@ void ft_set_dir(t_mapinfo *mapinfo, t_plr *plr)
 void ft_init_player(t_mapinfo *mapinfo, t_plr *plr)
 {
 	t_point point;
-	int dup_plr;
+	int plr_flag;
 
 	ft_bzero(&point, sizeof(t_point));
-	dup_plr = 1;
+	plr_flag = 0;
 	while (mapinfo->map[point.y])
 	{
 		point.x = 0;
 		while (mapinfo->map[point.y][point.x])
 		{
-			if(ft_strchr("NEWS",mapinfo->map[point.y][point.x]) && dup_plr != 0)
+			if(ft_strchr("NEWS",mapinfo->map[point.y][point.x]))
 			{
-
 				ft_set_dir(mapinfo, plr);
 				plr->y = (point.y) * SCALE;
 				plr->x = (point.x) * SCALE;
-				dup_plr = 0;
+				plr_flag++;
 			}
-//			else
-//				ft_error(ERR_MAP_VALIDITY);
 			point.x++;
 		}
 		point.y++;
 	}
+	printf("players on map: %d\n", plr_flag);
+	if (plr_flag != 1)
+		ft_error(ERR_MAP_VALIDITY);
 }
 
 void ft_print_player(t_all *all)
