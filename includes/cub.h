@@ -34,6 +34,16 @@
 # define ERR_MAP_C -117
 # define ERR_MAP_OPEN -118
 
+//LINUX
+# define W 119
+# define S 115
+# define A 97
+# define D 100
+# define LEFT 65361
+# define RIGHT 65363
+# define ESC 65307
+
+//MAC OS
 //# define W 13
 //# define S 1
 //# define A 0
@@ -64,6 +74,8 @@ typedef struct	s_mapinfo
 
 typedef struct	s_win //структура для окна
 {
+	int			height;
+	int			width;
 	void		*mlx;
 	void		*win;
 	void		*img;
@@ -122,6 +134,7 @@ void ft_init_window(t_win *win, t_mapinfo *mapinfo, char *wname);
 
 /*drawing*/
 void	pixel_put(t_win *twin, int x, int y, int color);
+int 	ft_frame_render(t_all *all);
 
 void ft_draw_map(t_all *all);
 void ft_print_player(t_all *all);
@@ -133,6 +146,6 @@ void ft_init_game(t_mapinfo *mapinfo, t_all *all, char *name);
 
 /*hooks, key press*/
 int             ft_key_press(int keycode, t_all *all);
-int	ft_close(int code, t_all *all);
+int				ft_close(int code, t_all *all);
 
 #endif

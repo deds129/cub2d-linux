@@ -49,7 +49,7 @@ void ft_draw_map(t_all *all)
 		point.y++;
 	}
 	mlx_put_image_to_window(all->wnd->mlx, all->wnd->win,all->wnd->img,0,0);
-	ft_print_player(all);
+	//ft_print_player(all);
 	ft_draw_ray(all);
 
 }

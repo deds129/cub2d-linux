@@ -11,20 +11,18 @@
 # **************************************************************************** #
 
 #FOR LINUX
-CFLAGS 	=  	-Wall -Wextra -Werror
+CFLAGS 	=  -O3	-Wall -Wextra -Werror
 SRCS 	=		main.c \
 				./gnl/get_next_line.c \
 				./gnl/get_next_line_utils.c \
 				ft_parse_args.c \
 				ft_error.c \
-				ft_init_structs.c \
 				ft_parse_cub.c \
 				ft_parse_utils.c \
 				ft_parse_map.c \
 				ft_read_cub.c \
 				ft_window.c	\
-				ft_init_game.c \
-				ft_draw_map.c \
+				ft_frame_render.c \
 				ft_hook.c \
 				ft_player.c
 

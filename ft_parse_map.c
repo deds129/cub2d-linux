@@ -50,7 +50,7 @@ void ft_parse_map(char **data, t_mapinfo *mapinfo)
 			+ 1) *
 			ft_row_counter(data))))
 		ft_error(ERR_MALLOC);
-
+	//printf("ll: %d, rc %d \n",ft_longest_line(data),ft_row_counter(data));
 	j = 0;
 	while (data[++i])
 	{
