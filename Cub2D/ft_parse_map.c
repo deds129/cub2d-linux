@@ -50,26 +50,12 @@ void ft_parse_map(char **data, t_mapinfo *mapinfo)
 			+ 1) *
 			ft_row_counter(data))))
 		ft_error(ERR_MALLOC);
-	printf("ll: %d, rc %d \n",ft_longest_line(data),ft_row_counter(data));
+
+
 	j = 0;
 	while (data[++i])
 	{
-
-		if (data[i][0] == ' ' ||  data[i][0] == '1')
-		{
+		if (data[i][0] == ' ' || data[i][0] == '1')
 			mapinfo->map[j++] = data[i];
-		}
 	}
-	//check valid
-//	i = 0;
-//	while (mapinfo->map[i])
-//	{
-//		if (!(mapinfo->map[i][0] == ' ' ||  mapinfo->map[i][0] == '1'))
-//		{
-//			ft_error(ERR_MAP_VALIDITY);
-//		}
-//		i++;
-//	}
-//	if (j != ft_row_counter(data))
-//		ft_error(ERR_MAP_VALIDITY);
 }

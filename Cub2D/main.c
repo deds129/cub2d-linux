@@ -56,7 +56,7 @@ int	main(int argc, char *argv[])
 	//parse map params + valid check
 	ft_parse_cub(data, &mapinfo);
 	//parse map + valid check
-	ft_parse_map(data, &mapinfo);
+	//ft_parse_map(data, &mapinfo);
 	//test func
 	//ft_print_params(&mapinfo);
 

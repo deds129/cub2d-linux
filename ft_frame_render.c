@@ -1,5 +1,18 @@
 #include "./includes/cub.h"
 
+//void ft_raycast(t_all *all,t_plr *ray, int ray_len)
+//{
+//	int line_h;
+//	line_h = 0;
+//	line_h = (int) (all->wnd->height / ray_len);
+//	printf("%i\n", line_h);
+//	while ()
+//	{
+//		pixel_put(all->wnd, ray->x, ray->y, 0x990099);
+//	}
+//
+//}
+
 void	ft_view_conf(t_all *all)
 {
 	t_plr	ray;
@@ -19,8 +32,11 @@ void	ft_view_conf(t_all *all)
 			len++;
 			pixel_put(all->wnd, ray.x, ray.y, 0x990099);
 		}
-		printf("ray len: %f\n", len);
-		//todo: обработка каждого луча- рисуем столбец по лучу по gbritann
+		//printf("ray len: %f\n", len);
+		//todo: обработка каждого луча- рисуем столбец по лучу по gbritnn
+		//ft_raycast(all,&ray,len); //длина луча, высота экранаб длина стены,
+		// середина
+		// экрана.
 		ray.start += (M_PI_2) / all->wnd->width;
 	}
 }

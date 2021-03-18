@@ -91,12 +91,14 @@ void ft_set_resolution(char *str, t_mapinfo *mapinfo)
 void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
 {
 	int i;
+	int map_started;
 
+	map_started = 0;
 	i = -1;
 	while (data[++i])
 	{
 		//printf("%c\n",data[i][0]);
-		if(ft_valid_str(data[i]) == 1)
+		if (ft_valid_str(data[i]) == 1)
 		{
 			//printf("test");
 			if (data[i][0] == 'R' && data[i][1] == ' ')
@@ -115,9 +117,16 @@ void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
 				ft_set_color(data[i], mapinfo, 'F');
 			else if (data[i][0] == 'C' && data[i][1] == ' ')
 				ft_set_color(data[i], mapinfo, 'C');
+			else if ((map_started == 0) && data[i][0] == ' ' || data[i][0] ==
+			'1')
+			{
+				ft_parse_map(data, mapinfo);
+				map_started = 1;
+			}
+
 		}
 		else
 			ft_error(ERR_MAP_VALIDITY);
-	}
 
+	}
 }

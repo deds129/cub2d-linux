@@ -58,6 +58,10 @@ int	main(int argc, char *argv[])
 	all.wnd = &win;
 	all.plr = &plr;
 	all.map = mapinfo.map;
+	int i = -1;
+	while(all.map[++i])
+		ft_putendl_fd(all.map[++i],1);
+	printf("\n");
 
 	printf("start y: %f\n", all.plr->y);
 	printf("start x: %f\n", all.plr->x);

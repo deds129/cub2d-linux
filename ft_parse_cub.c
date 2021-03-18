@@ -119,5 +119,4 @@ void ft_parse_cub(char **data, t_mapinfo *mapinfo) //int map_size
 		else
 			ft_error(ERR_MAP_VALIDITY);
 	}
-
 }
